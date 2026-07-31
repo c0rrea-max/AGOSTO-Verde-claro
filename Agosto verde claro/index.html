@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agosto Verde Claro — Conscientização sobre o Linfoma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EC;
+    --cream-alt:#F1ECDE;
+    --ink:#20301F;
+    --green-deep:#2F5233;
+    --green-mid:#5C8A5A;
+    --green-light:#AEDBA6;
+    --green-pale:#DCEFD6;
+    --coral:#E2734F;
+    --coral-soft:#F3C9B7;
+    --line:rgba(32,48,31,0.14);
+    --shadow: 0 20px 40px -20px rgba(47,82,51,0.35);
+    --radius: 22px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0 0 .4em 0;
+    color:var(--green-deep);
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em 0;}
+  a{color:inherit;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--green-mid);
+    display:flex;
+    align-items:center;
+    gap:.6em;
+    margin-bottom:.9em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--coral);
+    display:inline-block;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  section{padding:104px 0;position:relative;}
+  @media(max-width:720px){ section{padding:72px 0;} }
+ 
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,236,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem;
+    color:var(--green-deep);
+  }
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--green-light); border:2px solid var(--green-deep);}
+  nav.links{display:flex; gap:28px; font-size:.9rem;}
+  nav.links a{
+    text-decoration:none; color:var(--ink); opacity:.75;
+    padding:6px 0; border-bottom:2px solid transparent; transition:.25s;
+  }
+  nav.links a:hover{opacity:1; border-color:var(--coral);}
+  @media(max-width:720px){ nav.links{display:none;} }
+ 
+  /* ---------- NODE NETWORK BACKGROUND (signature motif) ---------- */
+  .node-field{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .node-field svg{width:100%; height:100%;}
+  .node-field circle{fill:var(--green-mid); opacity:.5;}
+  .node-field .pulse{animation:pulse 4.5s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{opacity:.25; r:3;}
+    50%{opacity:.75; r:5;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .node-field .pulse{animation:none;}
+  }
+ 
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:88px; padding-bottom:90px;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 78% 12%, var(--green-pale) 0%, transparent 55%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .ribbon-mark{width:64px; height:auto; margin-bottom:28px;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.02;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:italic; color:var(--coral); font-weight:500;}
+  .hero .lede{
+    font-size:1.18rem; max-width:46ch; color:var(--ink); opacity:.86;
+    margin-top:18px;
+  }
+  .hero-cta{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:.92rem;
+    padding:14px 26px; border-radius:100px; border:none; cursor:pointer;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{background:var(--green-deep); color:var(--cream);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn-ghost{background:transparent; color:var(--green-deep); border:1.5px solid var(--green-deep);}
+  .btn-ghost:hover{background:var(--green-deep); color:var(--cream);}
+ 
+  .hero-stats{
+    margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:1px solid var(--line);
+    padding-top:28px;
+  }
+  .hero-stats div{padding-right:20px; border-right:1px solid var(--line);}
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stats .num{
+    font-family:'Fraunces', serif; font-size:2.1rem; color:var(--coral); font-weight:600;
+  }
+  .hero-stats .label{font-size:.82rem; opacity:.75; margin-top:4px;}
+  @media(max-width:720px){
+    .hero-stats{grid-template-columns:1fr; gap:18px;}
+    .hero-stats div{border-right:none; padding-right:0;}
+  }
+ 
+  /* ---------- SOBRE ---------- */
+  .sobre{background:var(--cream-alt);}
+  .sobre-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;
+  }
+  @media(max-width:840px){ .sobre-grid{grid-template-columns:1fr; gap:40px;} }
+  .sobre h2{font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:12ch;}
+  .info-card{
+    background:var(--cream); border-radius:var(--radius); padding:28px 30px;
+    border:1px solid var(--line); margin-bottom:18px;
+  }
+  .info-card h4{font-size:1.05rem; margin-bottom:8px; display:flex; gap:10px; align-items:center;}
+  .info-card h4 .ico{
+    width:34px;height:34px;border-radius:50%; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .info-card p{font-size:.94rem; opacity:.85; margin:0;}
+ 
+  /* ---------- SINAIS ---------- */
+  .sinais .wrap>p.lede{max-width:60ch; font-size:1.08rem; opacity:.85;}
+  .sinais-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px;
+  }
+  @media(max-width:900px){ .sinais-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .sinais-grid{grid-template-columns:1fr;} }
+  .sinal-card{
+    background:var(--green-deep); color:var(--cream); border-radius:18px;
+    padding:26px 22px; min-height:170px; display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; overflow:hidden;
+  }
+  .sinal-card:nth-child(2n){background:var(--green-mid);}
+  .sinal-card .n{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; opacity:.7;
+  }
+  .sinal-card p{margin:0; font-size:.98rem; font-weight:500;}
+ 
+  /* ---------- GALERIA ---------- */
+  .galeria{background:var(--cream-alt);}
+  .gal-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px;
+  }
+  @media(max-width:900px){ .gal-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .gal-grid{grid-template-columns:1fr;} }
+  .gal-item{
+    background:var(--cream); border-radius:16px; overflow:hidden; border:1px solid var(--line);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .gal-item:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .gal-item .frame{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    background:var(--green-pale);
+  }
+  .gal-item .frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .gal-cap{padding:14px 16px;}
+  .gal-cap .n{font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--coral); letter-spacing:.08em;}
+  .gal-cap p{margin:.25em 0 0; font-size:.88rem; font-weight:500;}
+ 
+  /* ---------- VIDEOS ---------- */
+  .videos-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:44px;}
+  @media(max-width:800px){ .videos-grid{grid-template-columns:1fr;} }
+  .video-card{background:var(--cream-alt); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);}
+  .video-card .frame-wrap{position:relative; padding-top:56.25%; background:#000;}
+  .video-card iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-card .meta{padding:20px 22px;}
+  .video-card .meta p{margin:0; font-size:.9rem; opacity:.8;}
+ 
+  /* ---------- QUIZ ---------- */
+  .quiz-section{
+    background:var(--green-deep); color:var(--cream); border-radius:32px; margin:0 auto;
+    max-width:1120px; padding:64px 44px; position:relative; overflow:hidden;
+  }
+  @media(max-width:720px){ .quiz-section{padding:44px 22px; border-radius:22px;} }
+  .quiz-section h2{color:var(--cream);}
+  .quiz-section .eyebrow{color:var(--green-light);}
+  .quiz-section .eyebrow::before{background:var(--coral-soft);}
+  .quiz-wrap{
+    max-width:640px; margin:36px auto 0; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16); border-radius:20px; padding:34px;
+    backdrop-filter:blur(4px);
+  }
+  .quiz-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.8;}
+  .progress-bar{height:5px; background:rgba(255,255,255,0.15); border-radius:10px; overflow:hidden; margin-bottom:26px;}
+  .progress-fill{height:100%; width:0%; background:var(--coral); transition:width .4s ease;}
+  #quiz-question{font-family:'Fraunces',serif; font-size:1.35rem; font-weight:500; margin-bottom:24px; min-height:2.6em;}
+  .quiz-options{display:flex; flex-direction:column; gap:12px;}
+  .quiz-opt{
+    text-align:left; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2);
+    color:var(--cream); padding:14px 18px; border-radius:12px; cursor:pointer;
+    font-family:'Work Sans',sans-serif; font-size:.98rem; transition:.2s;
+  }
+  .quiz-opt:hover{background:rgba(255,255,255,0.16);}
+  .quiz-opt.correct{background:var(--green-light); color:var(--green-deep); border-color:var(--green-light); font-weight:600;}
+  .quiz-opt.wrong{background:var(--coral); color:#fff; border-color:var(--coral);}
+  .quiz-opt[disabled]{cursor:default;}
+  .quiz-feedback{margin-top:16px; font-size:.9rem; min-height:1.4em; opacity:.9;}
+  .quiz-footer{display:flex; justify-content:space-between; align-items:center; margin-top:26px;}
+  #quiz-next{
+    background:var(--coral); color:#fff; border:none; padding:11px 22px; border-radius:100px;
+    font-weight:600; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:.9rem;
+    opacity:0; pointer-events:none; transition:.25s;
+  }
+  #quiz-next.show{opacity:1; pointer-events:auto;}
+  .quiz-result{display:none; text-align:center;}
+  .quiz-result.show{display:block;}
+  .quiz-result .score{font-family:'Fraunces',serif; font-size:3rem; color:var(--coral-soft); margin:6px 0;}
+  .quiz-result p{opacity:.85;}
+  #quiz-restart{
+    margin-top:18px; background:var(--cream); color:var(--green-deep); border:none;
+    padding:12px 26px; border-radius:100px; font-weight:600; cursor:pointer; font-family:'Work Sans',sans-serif;
+  }
+ 
+  /* ---------- AUTORIA / FOOTER ---------- */
+  footer.site{
+    background:var(--ink); color:var(--cream-alt); padding:70px 0 34px;
+  }
+  .foot-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:44px; margin-bottom:52px;
+  }
+  @media(max-width:760px){ .foot-grid{grid-template-columns:1fr; gap:32px;} }
+  footer.site h4{color:var(--green-light); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; font-family:'IBM Plex Mono',monospace; margin-bottom:14px;}
+  footer.site .brand-foot{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--cream);}
+  footer.site p{opacity:.72; font-size:.92rem;}
+  footer.site ul{list-style:none; padding:0; margin:0;}
+  footer.site li{opacity:.8; font-size:.92rem; margin-bottom:8px;}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,0.12); padding-top:24px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:.8rem; opacity:.6; font-family:'IBM Plex Mono',monospace;
+  }
+ 
+  .edit-note{
+    background:var(--coral-soft); color:#5a2e1c; font-size:.78rem; padding:3px 10px;
+    border-radius:6px; font-family:'IBM Plex Mono',monospace; margin-left:8px; white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+ 
+<header class="site">
+  <div class="nav">
+    <div class="brand"><span class="dot"></span> Agosto Verde Claro</div>
+    <nav class="links">
+      <a href="#sobre">A campanha</a>
+      <a href="#sinais">Sinais</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </div>
+</header>
+ 
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="node-field" aria-hidden="true">
+    <svg viewBox="0 0 1120 600" preserveAspectRatio="xMidYMid slice">
+      <line x1="820" y1="60" x2="960" y2="140" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <line x1="960" y1="140" x2="1040" y2="60" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <line x1="960" y1="140" x2="920" y2="260" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <line x1="920" y1="260" x2="1020" y2="330" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <line x1="820" y1="60" x2="760" y2="180" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <line x1="1040" y1="60" x2="1090" y2="180" stroke="#5C8A5A" stroke-width="1" opacity="0.3"/>
+      <circle class="pulse" cx="820" cy="60" r="4"/>
+      <circle class="pulse" cx="960" cy="140" r="4" style="animation-delay:.6s"/>
+      <circle class="pulse" cx="1040" cy="60" r="4" style="animation-delay:1.2s"/>
+      <circle class="pulse" cx="920" cy="260" r="4" style="animation-delay:1.8s"/>
+      <circle class="pulse" cx="1020" cy="330" r="4" style="animation-delay:2.4s"/>
+      <circle class="pulse" cx="760" cy="180" r="4" style="animation-delay:.3s"/>
+      <circle class="pulse" cx="1090" cy="180" r="4" style="animation-delay:1.5s"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <svg class="ribbon-mark" viewBox="0 0 64 90" fill="none">
+      <path d="M32 4C32 4 14 22 14 40C14 52 22 58 32 58C42 58 50 52 50 40C50 22 32 4 32 4Z" fill="#AEDBA6" stroke="#2F5233" stroke-width="2.5"/>
+      <path d="M22 54L14 86L32 74L50 86L42 54" stroke="#2F5233" stroke-width="2.5" stroke-linejoin="round" fill="#DCEFD6"/>
+    </svg>
+    <div class="eyebrow">Campanha de saúde · Agosto</div>
+    <h1>Um laço <em>verde-claro</em> pela vida.</h1>
+    <p class="lede">Agosto é o mês dedicado, pela Organização Mundial da Saúde, à conscientização sobre o linfoma — um câncer que se origina no sistema linfático. Este site reúne informações, imagens e um quiz interativo para levar esse conhecimento até a nossa comunidade escolar.</p>
+    <div class="hero-cta">
+      <a href="#sobre" class="btn btn-primary">Entender a campanha</a>
+      <a href="#quiz" class="btn btn-ghost">Fazer o quiz</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="num">+15 mil</div>
+        <div class="label">novos casos de linfoma estimados por ano no Brasil, somando os tipos Hodgkin e não-Hodgkin</div>
+      </div>
+      <div>
+        <div class="num">85%</div>
+        <div class="label">taxa de cura em casos diagnosticados e tratados precocemente, segundo especialistas</div>
+      </div>
+      <div>
+        <div class="num">40+</div>
+        <div class="label">subtipos de linfoma já identificados pela medicina</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== SOBRE ===================== -->
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div>
+        <div class="eyebrow">Sobre a campanha</div>
+        <h2>Por que a cor verde-claro?</h2>
+        <p style="opacity:.85; margin-top:18px;">O laço verde-claro foi escolhido para representar, mundialmente, a luta contra o linfoma. Ele aparece ao longo de agosto em hospitais, redes sociais e campanhas de saúde pública como símbolo de atenção, cuidado e esperança para quem enfrenta a doença.</p>
+      </div>
+      <div>
+        <div class="info-card">
+          <h4><span class="ico">🩺</span> O que é o linfoma?</h4>
+          <p>O linfoma é um tipo de câncer que se origina nos linfócitos, células de defesa que fazem parte do sistema linfático — a rede de gânglios e vasos responsável por proteger o corpo contra infecções. Quando essas células passam a se multiplicar de forma descontrolada, formam-se os linfomas.</p>
+        </div>
+        <div class="info-card">
+          <h4><span class="ico">🔬</span> Hodgkin e não-Hodgkin</h4>
+          <p>A doença é dividida em dois grandes grupos: o linfoma de Hodgkin, mais comum entre adultos jovens e após os 60 anos, com evolução mais previsível; e o linfoma não-Hodgkin, mais frequente, que reúne diversos subtipos com comportamentos distintos.</p>
+        </div>
+        <div class="info-card">
+          <h4><span class="ico">⏱️</span> Diagnóstico precoce</h4>
+          <p>Identificar a doença logo no início muda o rumo do tratamento: nas últimas duas décadas, avanços médicos elevaram bastante as taxas de cura. Por isso a campanha reforça a importância de procurar avaliação médica diante de sinais persistentes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== SINAIS ===================== -->
+<section class="sinais" id="sinais">
+  <div class="wrap">
+    <div class="eyebrow">Fique atento</div>
+    <h2>Sinais que merecem avaliação médica</h2>
+    <p class="lede">Nenhum desses sintomas, isoladamente, significa um diagnóstico — mas quando persistem por semanas, vale a pena procurar um médico.</p>
+    <div class="sinais-grid">
+      <div class="sinal-card"><span class="n">01</span><p>Ínguas (gânglios) indolores no pescoço, nas axilas ou na virilha</p></div>
+      <div class="sinal-card"><span class="n">02</span><p>Febre persistente e suor noturno intenso</p></div>
+      <div class="sinal-card"><span class="n">03</span><p>Perda de peso sem explicação aparente</p></div>
+      <div class="sinal-card"><span class="n">04</span><p>Cansaço fora do comum e coceira na pele</p></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== GALERIA ===================== -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="eyebrow">Galeria</div>
+    <h2>A campanha em imagens</h2>
+    <p class="lede" style="max-width:60ch; opacity:.8;">Ilustrações originais criadas para este site, representando os símbolos e momentos da campanha Agosto Verde Claro.</p>
+ 
+    <div class="gal-grid">
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="/IMG/1.png" alt="Laço verde-claro de conscientização" />
+        </div>
+        <div class="gal-cap"><div class="n">01</div><p>O laço verde-claro</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/2.jpg" alt="Ilustração do sistema linfático e redes de saúde" />
+        </div>
+        <div class="gal-cap"><div class="n">02</div><p>Sistema linfático</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/3.jpg" alt="Consulta médica mostrando cuidado e atenção" />
+        </div>
+        <div class="gal-cap"><div class="n">03</div><p>Consulta e diagnóstico</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/4.jpg" alt="Exame de sangue e laboratório" />
+        </div>
+        <div class="gal-cap"><div class="n">04</div><p>Exame de sangue</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/5.jpg" alt="Família dando apoio e solidariedade" />
+        </div>
+        <div class="gal-cap"><div class="n">05</div><p>Apoio da família</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/6.jpg" alt="Caminhada de conscientização com pessoas" />
+        </div>
+        <div class="gal-cap"><div class="n">06</div><p>Caminhada de conscientização</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/7.jpg" alt="Calendário marcando o mês de agosto" />
+        </div>
+        <div class="gal-cap"><div class="n">07</div><p>Agosto no calendário</p></div>
+      </div>
+ 
+      <div class="gal-item">
+        <div class="frame">
+          <img src="./IMG/8.jpg" alt="Esperança e cuidado na jornada de tratamento" />
+        </div>
+        <div class="gal-cap"><div class="n">08</div><p>Esperança e diagnóstico precoce</p></div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== VIDEOS ===================== -->
+<section class="videos" id="videos">
+  <div class="wrap">
+    <div class="eyebrow">Vídeos</div>
+    <h2>Para assistir e compartilhar</h2>
+    <p class="lede" style="max-width:60ch; opacity:.8;">Dois vídeos que ajudam a entender melhor o linfoma e a importância da campanha.</p>
+    <div class="videos-grid">
+      <div class="video-card">
+        <div class="frame-wrap">
+          <iframe src="https://www.youtube.com/embed/2o0ddaVANWE" title="Agosto Verde Claro, Mês de Conscientização do Linfoma" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="meta">
+          <p><strong>Agosto Verde Claro — Mês de Conscientização do Linfoma.</strong> Uma conversa explicando o linfoma de Hodgkin e não-Hodgkin, com foco em tirar dúvidas sobre a doença.</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="frame-wrap">
+          <iframe src="https://www.youtube.com/embed/SVl58zd6yzc" title="Reportagem sobre linfoma" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="meta">
+          <p><strong>Reportagem sobre o linfoma.</strong> Um relato real sobre os primeiros sintomas, o diagnóstico e o caminho até o tratamento, com explicações médicas sobre a doença.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== QUIZ ===================== -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="quiz-section">
+      <div class="node-field" aria-hidden="true" style="opacity:.5;">
+        <svg viewBox="0 0 1120 500" preserveAspectRatio="xMidYMid slice">
+          <line x1="100" y1="420" x2="200" y2="460" stroke="#AEDBA6" stroke-width="1"/>
+          <line x1="200" y1="460" x2="300" y2="410" stroke="#AEDBA6" stroke-width="1"/>
+          <circle class="pulse" cx="100" cy="420" r="3" fill="#AEDBA6"/>
+          <circle class="pulse" cx="200" cy="460" r="3" fill="#AEDBA6" style="animation-delay:1s"/>
+          <circle class="pulse" cx="300" cy="410" r="3" fill="#AEDBA6" style="animation-delay:2s"/>
+        </svg>
+      </div>
+      <div class="eyebrow">Ferramenta interativa</div>
+      <h2>Quiz — o que você sabe sobre o linfoma?</h2>
+      <p style="opacity:.8; max-width:50ch;">Oito perguntas rápidas para testar e reforçar o que você aprendeu nesta página.</p>
+ 
+      <div class="quiz-wrap">
+        <div id="quiz-active">
+          <div class="quiz-top">
+            <span id="quiz-count">Pergunta 1 de 8</span>
+            <span id="quiz-score">Acertos: 0</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <div id="quiz-question"></div>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-feedback" id="quiz-feedback"></div>
+          <div class="quiz-footer">
+            <span></span>
+            <button id="quiz-next">Próxima pergunta →</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result">
+          <div class="eyebrow" style="justify-content:center;">Resultado</div>
+          <div class="score" id="final-score">0/8</div>
+          <p id="final-message"></p>
+          <button id="quiz-restart">Refazer o quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== FOOTER / AUTORIA ===================== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-foot">Agosto Verde Claro</div>
+        <p style="margin-top:12px;">Site educativo produzido como projeto escolar para divulgar informações sobre a conscientização do linfoma durante o mês de agosto.</p>
+      </div>
+      <div>
+        <h4>Escola</h4>
+        <ul>
+          <li>Análise e desenvolvimento de sistemas<span class="edit-note">Senai</span></li>
+          <li>Sorocaba — SP</li>
+          <li>DEV<span class="edit-note">2B</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Autoria</h4>
+        <ul>
+          <li>Aluno:<span class="edit-note">João Victor da Silva Corrêa</span></li>
+          
+          <li>Disciplina:<span class="edit-note">FrontEnd</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Agosto Verde Claro · Conscientização sobre o Linfoma</span>
+      <span>Projeto escolar · 2026</span>
+    </div>
+  </div>
+</footer>
+ 
+<script>
+(function(){
+  const questions = [
+    {
+      q: "Qual é a cor do laço que representa a campanha de conscientização sobre o linfoma?",
+      options: ["Rosa", "Verde-claro", "Azul", "Amarelo"],
+      correct: 1,
+      explain: "O verde-claro é a cor oficial adotada mundialmente para representar a luta contra o linfoma."
+    },
+    {
+      q: "Em qual sistema do corpo o linfoma se origina?",
+      options: ["Sistema digestivo", "Sistema respiratório", "Sistema linfático", "Sistema muscular"],
+      correct: 2,
+      explain: "O linfoma surge nos linfócitos, células do sistema linfático — a rede de gânglios e vasos que defende o corpo contra infecções."
+    },
+    {
+      q: "Quais são os dois grandes grupos de linfoma?",
+      options: ["Agudo e crônico", "Hodgkin e não-Hodgkin", "Primário e secundário", "Benigno e maligno"],
+      correct: 1,
+      explain: "Os linfomas se dividem em Hodgkin, mais previsível, e não-Hodgkin, que reúne diversos subtipos."
+    },
+    {
+      q: "Qual destes é um sinal de alerta comumente associado ao linfoma?",
+      options: ["Ínguas indolores no pescoço, axilas ou virilha", "Dor de dente", "Visão embaçada", "Queda de cabelo repentina"],
+      correct: 0,
+      explain: "Gânglios (ínguas) inchados e indolores por várias semanas são um sinal clássico que merece avaliação médica."
+    },
+    {
+      q: "Por que o diagnóstico precoce é tão importante no caso do linfoma?",
+      options: [
+        "Ele não influencia o tratamento",
+        "Ele aumenta significativamente as chances de cura",
+        "Ele só é relevante para crianças",
+        "Ele elimina a necessidade de exames"
+      ],
+      correct: 1,
+      explain: "Avanços no tratamento elevaram bastante as taxas de cura quando a doença é identificada logo no início."
+    },
+    {
+      q: "Qual organização internacional instituiu o Agosto Verde Claro como mês de conscientização?",
+      options: ["ONU", "UNESCO", "Organização Mundial da Saúde (OMS)", "UNICEF"],
+      correct: 2,
+      explain: "A campanha foi instituída pela Organização Mundial da Saúde (OMS)."
+    },
+    {
+      q: "Verdadeiro ou falso: o linfoma afeta apenas pessoas idosas.",
+      options: ["Verdadeiro", "Falso"],
+      correct: 1,
+      explain: "Falso — o linfoma de Hodgkin, por exemplo, é comum também entre adultos jovens, em torno dos 20 anos."
+    },
+    {
+      q: "Além de gânglios inchados, qual sintoma também pode indicar linfoma?",
+      options: ["Febre persistente e suor noturno", "Unhas mais fortes", "Melhora do apetite", "Aumento da energia"],
+      correct: 0,
+      explain: "Febre que não passa, suor noturno intenso e perda de peso sem explicação são sinais que merecem atenção."
+    }
+  ];
+ 
+  let current = 0;
+  let score = 0;
+  let answered = false;
+ 
+  const qEl = document.getElementById('quiz-question');
+  const optsEl = document.getElementById('quiz-options');
+  const feedbackEl = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next');
+  const countEl = document.getElementById('quiz-count');
+  const scoreEl = document.getElementById('quiz-score');
+  const fillEl = document.getElementById('progress-fill');
+  const activeEl = document.getElementById('quiz-active');
+  const resultEl = document.getElementById('quiz-result');
+  const finalScoreEl = document.getElementById('final-score');
+  const finalMsgEl = document.getElementById('final-message');
+  const restartBtn = document.getElementById('quiz-restart');
+ 
+  function renderQuestion(){
+    answered = false;
+    const item = questions[current];
+    qEl.textContent = item.q;
+    countEl.textContent = `Pergunta ${current+1} de ${questions.length}`;
+    scoreEl.textContent = `Acertos: ${score}`;
+    fillEl.style.width = `${(current/questions.length)*100}%`;
+    feedbackEl.textContent = '';
+    nextBtn.classList.remove('show');
+    optsEl.innerHTML = '';
+ 
+    item.options.forEach((opt, idx) => {
+      const b = document.createElement('button');
+      b.className = 'quiz-opt';
+      b.textContent = opt;
+      b.addEventListener('click', () => handleAnswer(idx, b));
+      optsEl.appendChild(b);
+    });
+  }
+ 
+  function handleAnswer(idx, btnEl){
+    if(answered) return;
+    answered = true;
+    const item = questions[current];
+    const allBtns = optsEl.querySelectorAll('.quiz-opt');
+    allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+ 
+    if(idx === item.correct){
+      score++;
+      btnEl.classList.add('correct');
+      feedbackEl.textContent = '✓ Certo! ' + item.explain;
+    } else {
+      btnEl.classList.add('wrong');
+      allBtns[item.correct].classList.add('correct');
+      feedbackEl.textContent = '✗ Quase! ' + item.explain;
+    }
+    scoreEl.textContent = `Acertos: ${score}`;
+    nextBtn.classList.add('show');
+  }
+ 
+  nextBtn.addEventListener('click', () => {
+    current++;
+    if(current < questions.length){
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  });
+ 
+  function showResult(){
+    activeEl.style.display = 'none';
+    resultEl.classList.add('show');
+    fillEl.style.width = '100%';
+    finalScoreEl.textContent = `${score}/${questions.length}`;
+    let msg;
+    if(score === questions.length){
+      msg = "Perfeito! Você entendeu muito bem a campanha Agosto Verde Claro.";
+    } else if(score >= questions.length/2){
+      msg = "Muito bom! Você já sabe bastante — revise as respostas para fixar ainda mais.";
+    } else {
+      msg = "Vale revisar o conteúdo da página e tentar de novo — cada acerto conta na hora de espalhar essa informação.";
+    }
+    finalMsgEl.textContent = msg;
+  }
+ 
+  restartBtn.addEventListener('click', () => {
+    current = 0; score = 0;
+    activeEl.style.display = 'block';
+    resultEl.classList.remove('show');
+    renderQuestion();
+  });
+ 
+  renderQuestion();
+})();
+</script>
+ 
+</body>
+</html>
